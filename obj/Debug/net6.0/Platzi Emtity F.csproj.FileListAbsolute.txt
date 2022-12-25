@@ -1,0 +1,70 @@
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\appsettings.Development.json
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\appsettings.json
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Platzi Emtity F.exe
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Platzi Emtity F.deps.json
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Platzi Emtity F.runtimeconfig.json
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Platzi Emtity F.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Platzi Emtity F.pdb
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Azure.Core.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Azure.Identity.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\System.Memory.Data.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\System.Security.Permissions.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\System.Windows.Extensions.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\proyecto web c#\Platzi Emtity F\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\Platzi Emtity F.csproj.AssemblyReference.cache
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\Platzi Emtity F.GeneratedMSBuildEditorConfig.editorconfig
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\Platzi Emtity F.AssemblyInfoInputs.cache
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\Platzi Emtity F.AssemblyInfo.cs
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\Platzi Emtity F.csproj.CoreCompileInputs.cache
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\Platzi Emtity F.MvcApplicationPartsAssemblyInfo.cache
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\staticwebassets.build.json
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\staticwebassets.development.json
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\scopedcss\bundle\Platzi Emtity F.styles.css
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\Platzi Emtity F.csproj.CopyComplete
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\Platzi Emtity F.dll
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\refint\Platzi Emtity F.dll
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\Platzi Emtity F.pdb
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\Platzi Emtity F.genruntimeconfig.cache
+D:\proyecto web c#\Platzi Emtity F\obj\Debug\net6.0\ref\Platzi Emtity F.dll
