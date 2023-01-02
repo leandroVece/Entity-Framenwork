@@ -199,7 +199,7 @@ Por ultomo creamos el metodo para eliminar los datos de la base de datos y con e
     return Results.NotFound();
 	});
 
-![Delete](Contents/Img/Detele.png "Delete")
+![Delete](Contents/Img/Delete.png "Delete")
 
 Si llegaste hasta aqui, felicidades terminamos una API minima. ahora conoces los servicios basicos para la comunicacion de API web con ASP.NET Core y Entity Frmaework.
 Si quieres saber mas aqui te dejo la [documentacion](https://learn.microsoft.com/es-es/aspnet/core/tutorials/min-web-api?view=aspnetcore-7.0&tabs=visual-studio-code "documentacion") sobre el tema.
