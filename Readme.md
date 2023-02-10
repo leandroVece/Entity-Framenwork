@@ -3,6 +3,281 @@
 por lo que no hagan lo mismo que yo.
 
 
+># Segunda nota importante.
+>por un error humano la primera parte no se subio correctamemte, por lo que lo volvi a hacer a mano sin prueba. por lo que se encuentre simples error en el cogido. En cuanto a lo logica y teoria no deberian de tener problemas.
+
+
+Para comenzar iniciemos un nuevo proyecto con la siguiente linea de codigo en su terminal.
+
+    dotnet new web
+
+Luego vamos a instalar las dependencias de nuget que estaremos usando para el proyecto
+
+    dotnet add package Microsoft.EntityFrameworkCore --version 7.0.2
+    dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 7.0.2
+    dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 7.0.2
+    dotnet add package Microsoft.EntityFrameworkCore.Design --version 7.0.2
+
+Con todo listo podemos crear los modelos que se van a converir en tablas en nuestras base de datos.
+
+**Categoty.cs**
+
+    using System.Text.Json.Serialization;
+
+    namespace EF.Models
+    {
+
+        public class Categoty
+        {
+            public Guid Id { get; set; }
+
+            public string Name { get; set; }
+
+            public string Description { get; set; }
+
+            [JsonIgnore]
+            public virtual ICollection<Task> Tasks { get; set; }
+        }
+    }
+
+**Task.cs**
+
+    using System.ComponentModel.DataAnnotations;
+
+    namespace EF.Models
+    {
+
+        public class Task
+        {
+            [Key]
+            public Guid Id { get; set; }
+            public Guid IdCategory { get; set; }
+
+            public string Title { get; set; }
+
+            public string Description { get; set; }
+            public Priority PriorityTask { get; set; }
+            public DateTime Date { get; set; }
+
+            public virtual Categoty Categoty { get; set; }
+
+            public string summary { get; set; }
+
+        }
+
+        public enum Priority
+        {
+            low,
+            medium,
+            high
+        }
+    }
+
+>Nota: Task es una palabra reservada en C# por lo que puede dar problemas en el futuro.
+
+Ahora vamos a crear el **contexto** donde van a ir todas las relaciones de los modelos que nosotros tenemos para poder transformarlo en colecciones que van a representarse dentro de la base de datos.
+
+    namespace EF.Models
+    {
+        class TaskContext : DbContext
+        {
+
+            public DbSet<Categoty> Categoties { get; set; }
+
+            public DbSet<Task> Tasks { get; set; }
+
+            public TaskContext(DbContextOptions<TaskContext> options) : base(options) { }
+    }
+
+DBSet: Es un set o una asignación de datos del modelo que nosotros hemos creado previamente, básicamente esto va a representar lo que sería una tabla dentro del contexto de entity framework.
+>Nota: Un DbSet representa la colección de todas las entidades en el contexto, que se puede consultar desde la base de datos, de un tipo determinado. Los objetos DbSet se crean a partir de DbContext mediante el método DbContext. set.
+
+Con esto ya podriamos crear una base de datos, pero existen atributos o DataAnnotations que nos permiten configurar de una manera mas estricta y especifica de nuestra base de datos
+
+**category.cs**
+
+    public class Categoria
+    {
+        [Key]
+        public Guid Id { get; set; }
+
+        [Required]
+        [MaxLength(150)]
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+    }
+
+**task.cs**
+
+    public class Task
+    {
+        [Key]
+        public Guid Id { get; set; }
+
+        [ForeignKey]
+        public Guid IdCategory { get; set; }
+
+        [Required]
+        [MaxLength(200)]
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+        public Priority PriorityTask { get; set; }
+        public DateTime Date { get; set; }
+
+        public virtual Categoty Categoty { get; set; }
+
+        [NotMapped]
+        public string summary { get; set; }
+    }
+
+
+Con estas categoria podremos especificar a cada columna:
+
+- [Key] Define un tipo de dato primario como el ID.
+- [Required] Define un dato de uso obligatorio. El usuario - deberá cargarlo si o si.
+[MaxLength(<Int>)] Establece un número máximo de caracteres que se podrán cargar en la DDBB.
+- [ForeignKey("<Str>")] Define una clave foránea y le da un nombre. Una clave foránea es un dato que se encuentra en otro documento, que es foráneo, que es “extranjero”.
+- [NotMapped] Omite el mapeo en la base de datos de este atributo.
+
+Con esto ya estamos listo para conectarnos a una base de datos real, pero antes de intentarlo vamos a comprobar que todo este andando correctamente. para ello conectemonos a una base de dato en memoria.
+
+vamos a nuestro archivo program.cs
+
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using proyectoef;
+
+    var builder = WebApplication.CreateBuilder(args);
+
+    builder.Services.AddDbContext<TaskContext>(p => p.UseInMemoryDatabase("TaskDB"));
+
+    var app = builder.Build();
+
+    app.MapGet("/", () => "Hello World!");
+
+    app.MapGet("/dbconexion", async ([FromServices] TaskContext dbContext) => 
+    {
+        dbContext.Database.EnsureCreated();
+        return Results.Ok("Base de datos en memoria: " + dbContext.Database.IsInMemory());
+
+    });
+
+    app.Run();
+
+con el primer app.MapGet() simplemente verifico si me olvide de algo para que Entity Framework puede generar la base de datos en memoria.
+
+con el segundo app. MapGet() creo la base de datos en memorias y si todo fue creado correctamente me devolvera un mensaje en caso contrario podremos ver el error en nuestra consola.
+
+A este Endpoind lo correremos en PostMan.
+
+![](./Contents/Img/Postman.png)
+
+>Nota: Para las personas que probaron con Postman y que al hacer click en Send les regresó el resultado ‘Could not get response’.
+Lo que hay que hacer es ir a la pestaña ‘Settings’ dentro de postman y deshabilitar la primera opción que dice ‘Enable SSL Certificate Verification’.
+
+Ahora podemos crear la base de datos. para ello comentemos nuestros codigo que nos permite crear la base de datos en memoria y agregurmos uno nuevo.
+
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using proyectoef;
+
+    var builder = WebApplication.CreateBuilder(args);
+
+    //builder.Services.AddDbContext<TaskContext>(p => p.UseInMemoryDatabase("TaskDB"));
+    builder.Services.AddSqlServer<TaskContext>(builder.Configuration.GetConnectionString("SQLServer"));
+
+
+    var app = builder.Build();
+
+    app.MapGet("/", () => "Hello World!");
+
+    app.MapGet("/dbconexion", async ([FromServices] TaskContext dbContext) => 
+    {
+        dbContext.Database.EnsureCreated();
+        return Results.Ok("Base de datos en memoria: " + dbContext.Database.IsInMemory());
+
+    });
+
+    app.Run();
+
+Luego en nuestro archivo appsetting.json copiaremos el siguiente codigo
+
+    {
+        "Logging": {
+            "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+            }
+        },
+        "AllowedHosts": "*",
+        "ConnectionStrings": {
+            "SQLServer": "Data Source=(local); Initial Catalog= TareasDb;Trusted_Connection=True; Integrated Security=True"
+        }
+    }
+
+En mi caso no tenia guardada una contraseña y usuario si este no es tu caso, la cadena de concexion a la base de datos seria el siguiente.
+
+    "Data Source=server;Initial Catalog=db;user id=sa; password=pass";
+
+Volvamos a llamar al endpoint el resultado que nos traera sera **false** porque ya no estamos conectando en memoria, pero nos deberia crear la base de datos. Esto se puede comprobar en Visual manager.
+
+
+## Fluen API
+
+En algunos escenarios mas avanzados nos vamos a quedar cortos en la creacion de base de datos con los atributos.
+Fuent Api nos va a permirit crear y configurar de una forma mucho mas avanzada nestros modelos para nuestra base de datos.
+
+Comencemos eliminando los atributos en nuestros modelos para crear lo mismo con Fluen API.
+
+Luego vamos a ir a nuestros TaskCintext.cs y vamos a agregar un poco de codigo.
+
+    class TaskContext : DbContext
+    {
+
+        public DbSet<Categoty> Categoties { get; set; }
+
+        public DbSet<Task> Tasks { get; set; }
+
+        public TaskContext(DbContextOptions<TaskContext> options) : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Categoty>(categoty =>
+            {
+                categoty.ToTable("Category");
+                categoty.HasKey(p => p.Id);
+
+                categoty.Property(p => p.Name).IsRequired().HasMaxLength(150);
+                categoty.Property(p => p.Salubrity).IsRequired();
+                categoty.Property(p => p.Description).IsRequired(false);
+
+                categoty.HasData(listCategory);
+            });
+
+            modelBuilder.Entity<Task>(task =>
+            {
+                task.ToTable("TasK");
+                task.HasKey(p => p.Id);
+
+                //aqui le digo a fluet que cree una base que tenga una relacion de unos a muchos y que la clave foranea va a ser idCategory
+                task.HasOne(p => p.Categoty).WithMany(p => p.Tasks).HasForeignKey(p => p.IdCategory);
+
+                task.Property(p => p.Title).IsRequired().HasMaxLength(150);
+                task.Property(p => p.Description).IsRequired(false);
+                task.Property(p => p.Date);
+                task.Property(p => p.PriorityTask).HasConversion(x => x.ToString(), x => (Priority)Enum.Parse(typeof(Priority), x));
+                task.Ignore(p => p.summary);
+
+                task.HasData(listTask);
+            });
+        }
+    }
+
+Con estos cambios ahora podemos volver a recrear nuestra base de datos, para esto primero debemos eliminar la primera base de datos.
+
+Luego de eliminarla corremos nuestro programa, una vez andando volvemos a Postman y corremos nuestro Endpoint. Vamos a visual management y comprovamos que nuestra base de datos este andando correctamente.
 
 ## Migraciones
 
@@ -29,7 +304,7 @@ Ahora que tenemos lo necesario, para poder continuar vamos a tener que crear de 
 
     dotnet ef database update
 
-Ya creada nuestra base de datos, podemos ir a SQL Manager para confirmar la creacion de la base de datos. Ahora, si es que la base no esta, no te preocupes solo tienes que actualizar para encontrarla.
+Ya creada nuestra base de datos, podemos ir a SQL management para confirmar la creacion de la base de datos. Ahora, si es que la base no esta, no te preocupes solo tienes que actualizar para encontrarla.
 En nuestra nueva base de datos vamos a encontrar nuestras dos tablas iniciales a las que ya estamos acostumbrados y una tercera tabla nueva que va a contener las migraciones o cambios que se van a hacer en nuestro proyecto.
 
 Ya sabemos crear una base de datos, pero avanzado nuestro proyecto nos topamos con la necesidad de modificar nuestra base de datos. en mi ejemplo voy a agregar una nueva porpiedad llamada **Salubrity ** en mi clase **Category**.

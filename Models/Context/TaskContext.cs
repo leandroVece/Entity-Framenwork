@@ -30,10 +30,7 @@ namespace EF.Models
                 categoty.Property(p => p.Description).IsRequired(false);
 
                 categoty.HasData(listCategory);
-
-
             });
-
 
             List<Task> listTask = new List<Task>();
             listTask.Add(new Task() { Id = Guid.Parse("f5d327bf-be98-4786-81d5-0a2412b7807e"), IdCategory = Guid.Parse("7b5e9399-8e95-4ae8-8745-9542a01e2cc0"), Title = "Limpiar Baño", PriorityTask = Priority.medium, Date = DateTime.Now });

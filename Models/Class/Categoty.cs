@@ -8,6 +8,7 @@ namespace EF.Models
 
     public class Categoty
     {
+
         public Guid Id { get; set; }
 
         public string Name { get; set; }

@@ -21,8 +21,6 @@ namespace EF.Models
 
         public string summary { get; set; }
 
-
-
     }
 
     public enum Priority
